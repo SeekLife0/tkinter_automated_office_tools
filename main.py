@@ -137,7 +137,7 @@ class Application(tk.Frame):  # application对象继承tk.Frame
         self.xVariable = StringVar()                                      # 创建变量，便于取值
         self.com = ttk.Combobox(self.fmode, textvariable=self.xVariable)  # 创建下拉菜单
         self.com.pack(side='left')                                        # 将下拉菜单绑定到窗体
-        self.com["value"] = ("docx内容替换", "xls/xlsx内容导入A", "xls/xlsx内容导入B")  # 给下拉菜单设定值
+        self.com["value"] = ("docx内容替换", "xls/xlsx多导一", "xls/xlsx一导多")  # 给下拉菜单设定值
         self.com["state"] = "readonly"
         self.com.current(0)                                                        # 设定下拉菜单的默认值为第1个
         self.com.bind("<<ComboboxSelected>>", self.modeCombbox)
@@ -546,6 +546,7 @@ class Application(tk.Frame):  # application对象继承tk.Frame
                 self.window_flag = 0  # 表示等待弹窗保持开启状态
                 # 用主线程创建提示窗口
                 self.createWait()
+                print "开始执行doc替换操作"
                 self.thread_task(self.deal_task)
             else:
                 self.message_error()
