@@ -1,2 +1,2 @@
 # tkinter_automated_office_tools
-一个由python的tkinter制作图形界面的自动化办公小工具
+一个使用python的tkinter制作图形界面的自动化办公小工具
