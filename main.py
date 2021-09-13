@@ -360,7 +360,7 @@ class Application(tk.Frame):  # application对象继承tk.Frame
             self.pathEntry2_s.set('')
             self.importPath = ''
             self.exportPath = ''
-        elif self.com.get() == 'xls/xlsx内容导入A':
+        elif self.com.get() == 'xls/xlsx多导一':
             print '1'
             self.combboxStr.set('当前模式：' + self.com.get())
             self.canvas.grid_forget()
@@ -370,7 +370,7 @@ class Application(tk.Frame):  # application对象继承tk.Frame
             self.pathEntry2_s.set('')
             self.importPath = ''
             self.exportPath = ''
-        elif self.com.get() == 'xls/xlsx内容导入B':
+        elif self.com.get() == 'xls/xlsx一导多':
             print '2'
             self.combboxStr.set('当前模式：' + self.com.get())
             self.canvas.grid_forget()
@@ -441,7 +441,7 @@ class Application(tk.Frame):  # application对象继承tk.Frame
             self.e2.grid(row=self.entry_row, column=2, ipadx=25, ipady=2, sticky=tk.E, padx=5)
             # 改变之修改相对位置,再调用一次create_window
             # self.canvas.create_window((200,(75+(self.f1.winfo_height() + 96 - self.c_height))),window=self.f1)
-        elif self.com.get() == 'xls/xlsx内容导入A':
+        elif self.com.get() == 'xls/xlsx多导一':
             print 'EA添加'  # 每次添加必须知道是第几行
             self.EA_entry_row += 1  # entry行号
             # print '每次增加距离-->' + str(self.f2.winfo_height())
@@ -484,7 +484,7 @@ class Application(tk.Frame):  # application对象继承tk.Frame
             self.e2_5 = tk.Entry(self.f2, textvariable=self.s2_5, width=5)
             self.entry_list_A.append(self.e2_5)
             self.e2_5.grid(row=self.EA_entry_row, column=5, ipadx=5, ipady=2)
-        elif self.com.get() == 'xls/xlsx内容导入B':
+        elif self.com.get() == 'xls/xlsx一导多':
             # print '3'
             self.EB_entry_row += 1  # entry行号
             # print '每次增加距离-->' + str(self.f2.winfo_height())
@@ -550,7 +550,7 @@ class Application(tk.Frame):  # application对象继承tk.Frame
                 self.thread_task(self.deal_task)
             else:
                 self.message_error()
-        elif self.com.get() == 'xls/xlsx内容导入A':
+        elif self.com.get() == 'xls/xlsx多导一':
             # 在按下按钮之前要判断导入导出路径是否填写，是否有效
             # 除了处理任务不一样其他代码均可复用
             if (self.exportPath != '' and self.exportPath != None) and (
@@ -568,7 +568,7 @@ class Application(tk.Frame):  # application对象继承tk.Frame
             else:
                 self.message_error()
         # 模式B还未开发完
-        elif self.com.get() == 'xls/xlsx内容导入B':
+        elif self.com.get() == 'xls/xlsx一导多':
             # 在按下按钮之前要判断导入导出路径是否填写，是否有效
             # 除了处理任务不一样其他代码均可复用
             if (self.exportPath != '' and self.exportPath != None) and (
@@ -957,7 +957,7 @@ class Application(tk.Frame):  # application对象继承tk.Frame
     # 选择一个要导入的路径
     def openDirectory1(self):
         # 导入时判断一下模式
-        if self.com.get() == 'xls/xlsx内容导入B':
+        if self.com.get() == 'xls/xlsx一导多':
             EB_fileName = askopenfilename(title='选择一个xls/xlsx', filetypes=[('XLS', '*.xls'), ('XLSX', '*.xlsx')])
             print EB_fileName
             self.importPath = EB_fileName
@@ -979,13 +979,13 @@ class Application(tk.Frame):  # application对象继承tk.Frame
             self.exportPath = path2
             # self.pathL2['text'] = path2    #改变label的路径显示
             self.pathEntry2_s.set(path2)
-        elif self.com.get() == 'xls/xlsx内容导入A':
+        elif self.com.get() == 'xls/xlsx多导一':
             EA_fileName = askopenfilename(title='选择一个xls/xlsx', filetypes=[('XLS', '*.xls'), ('XLSX', '*.xlsx')])
             print EA_fileName
             self.exportPath = EA_fileName
             # self.pathL2['text'] = EA_fileName    #改变label的路径显示
             self.pathEntry2_s.set(EA_fileName)
-        elif self.com.get() == 'xls/xlsx内容导入B':
+        elif self.com.get() == 'xls/xlsx一导多':
             EB_fileName = askopenfilename(title='选择一个xls/xlsx', filetypes=[('XLS', '*.xls'), ('XLSX', '*.xlsx')])
             print EB_fileName
             self.exportPath = EB_fileName
@@ -1009,9 +1009,9 @@ class Application(tk.Frame):  # application对象继承tk.Frame
                 # 根据模式来选择写入方式
                 if self.com.get() == 'docx内容替换':
                     self.thread_window(self.writeDataXML, fileName1)
-                elif self.com.get() == 'xls/xlsx内容导入A':
+                elif self.com.get() == 'xls/xlsx多导一':
                     self.thread_window(self.writeDataXML_A, fileName1)
-                elif self.com.get() == 'xls/xlsx内容导入B':
+                elif self.com.get() == 'xls/xlsx一导多':
                     self.thread_window(self.writeDataXML_B, fileName1)
 
     # 菜单栏加载一个xml文件
@@ -1023,10 +1023,10 @@ class Application(tk.Frame):  # application对象继承tk.Frame
             if self.com.get() == 'docx内容替换':
                 print fileName2
                 self.readDataXML(fileName2)
-            elif self.com.get() == 'xls/xlsx内容导入A':
+            elif self.com.get() == 'xls/xlsx多导一':
                 print fileName2
                 self.readDataXML_A(fileName2)
-            elif self.com.get() == 'xls/xlsx内容导入B':
+            elif self.com.get() == 'xls/xlsx一导多':
                 print fileName2
                 self.readDataXML_B(fileName2)
 

@@ -182,7 +182,7 @@ def wExecel3(path,values,reName):
                 row = values[num+1]
                 col = values[num+2]
                 print '写入的值：'+ str(value) + 'row:' + str(row) + 'col:' + str(col)
-                sheet.cell(row,col).value = value
+                sheet.cell(row+1,col+1).value = value
     #这里保存的路径需要修改，只需要路径名
     #path路径以点分隔把文件格式后缀删除加上重命名即可
     print path
