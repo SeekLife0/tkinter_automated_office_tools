@@ -1038,7 +1038,7 @@ class Application(tk.Frame):  # application对象继承tk.Frame
 
     # 帮助模式说明会自动打开电脑默认浏览器并进入我的简书
     def goToLink(self):
-        webbrowser.open_new_tab('https://www.jianshu.com/u/a8beefd3c05f')
+        webbrowser.open_new_tab('https://www.jianshu.com/p/227e22994dce')
 
     # 创建一个新线程方法用来执行保存操作
     @staticmethod
